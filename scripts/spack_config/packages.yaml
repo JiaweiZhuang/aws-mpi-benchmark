@@ -1,0 +1,5 @@
+packages:
+  slurm:
+    paths:
+      slurm@18.08.6: /opt/slurm/
+    buildable: False
