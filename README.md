@@ -61,7 +61,7 @@ Get Spack:
 
 Following sections install the environments `openmpi3`, `openmpi4`, `mpich3`. They will be shown in `spack env list`.
 
-**Add pre-installed Slurm to Spack** by copying [spack_config/packages.yaml](./spack_config/packages.yaml) to `~/.spack/packages.yaml`
+**Add pre-installed Slurm to Spack** by copying [scripts/spack_config/packages.yaml](./scripts/spack_config/packages.yaml) to `~/.spack/packages.yaml`
 
 #### OpenMPI
 
