@@ -15,6 +15,7 @@ for i in $(seq 1 $REPEAT); do
 
     bash ./pt2pt_openmpi3.sh $SUB_LOG_DIR/openmpi3
     bash ./pt2pt_openmpi4.sh $SUB_LOG_DIR/openmpi4
+    bash ./pt2pt_mpich3.sh $SUB_LOG_DIR/mpich3
 
     export FI_PROVIDER=sockets
     bash ./pt2pt_intelmpi.sh $SUB_LOG_DIR/intelmpi-tcp
