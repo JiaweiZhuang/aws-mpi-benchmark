@@ -38,3 +38,27 @@ bcast_algo_openmpi4 = [
     '8. scatter_allgather',
     '9. scatter_allgather_ring'
 ]
+
+allreduce_algo_intelmpi = [
+    '1. Recursive doubling',
+    "2. Rabenseifner's",
+    '3. Reduce + Bcast',
+    '4. Topology aware Reduce + Bcast',
+    '5. Binomial gather + scatter',
+    '6. Topology aware binominal gather + scatter',
+    "7. Shumilin's ring",
+    '8. Ring',
+    '9. Knomial',
+    '10. Topology aware SHM-based flat',
+    '11. Topology aware SHM-based Knomial',
+    '12. Topology aware SHM-based Knary'
+]
+
+allreduce_algo_openmpi3 = allreduce_algo_openmpi4 = [
+    '0. ignore',
+    '1. basic linear',
+    '2. nonoverlapping',
+    '3. recursive doubling',
+    '4. ring',
+    '5. segmented ring'
+]
