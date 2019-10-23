@@ -13,7 +13,8 @@ for i in $(seq 1 $REPEAT); do
 
     SUB_LOG_DIR=$TOP_LOG_DIR/run${i}/
 
-    bash ./pt2pt_openmpi.sh $SUB_LOG_DIR/openmpi
+    bash ./pt2pt_openmpi3.sh $SUB_LOG_DIR/openmpi3
+    bash ./pt2pt_openmpi4.sh $SUB_LOG_DIR/openmpi4
 
     export FI_PROVIDER=sockets
     bash ./pt2pt_intelmpi.sh $SUB_LOG_DIR/intelmpi-tcp
