@@ -15,7 +15,7 @@ echo "Top-level output dir: $TOP_LOG_DIR"
 for i in $(seq 1 $REPEAT); do
     echo "run $i of $REPEAT"
 
-    SUB_LOG_DIR=$HOME/osu_log/bcast/N${N}n${n}/run${i}/
+    SUB_LOG_DIR=$TOP_LOG_DIR/run${i}/
 
     bash ./bcast_openmpi3_tune_algo.sh $SUB_LOG_DIR/openmpi3
     bash ./bcast_openmpi4_tune_algo.sh  $SUB_LOG_DIR/openmpi4
