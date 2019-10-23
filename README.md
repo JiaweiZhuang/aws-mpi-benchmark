@@ -2,14 +2,14 @@
 
 Benchmark various MPI functions on AWS HPC cluster. Including different EC2 instance types, network configurations, MPI implementations, and collective algorithms (e.g broadcast, allreduce).
 
-The main motivation for such benchmark is that, different MPI implementations and their collective algorithms can yield vastly different efficiency and severely affect application performance. See those issues for example:
+The main motivation for such benchmark is that, different MPI implementations and their collective algorithms can yield vastly different efficiency and severely affect application performance. See [this issue](https://github.com/aws/aws-parallelcluster/issues/1143) for example.
 
 Most scripts in this repo also work on local HPC clusters with minimum modifications.
 
 ## Currently tested cases
 
 MPI functions from [OSU micro-benchmarks (OMB)](http://mvapich.cse.ohio-state.edu/benchmarks/):
-- Point-point: latency, bw, bibw, bw_mbr
+- Point-point: latency, bw, bibw
 - Collective: bcast, allreduce
 
 AWS instance & network configuration:
@@ -25,9 +25,9 @@ MPI:
 
 ## Browse benchmark results
 
-See notebooks:
+See [notebooks](./notebooks).
 
-Take-away: Intel-MPI's topology-aware Bcast is 2~5x faster than other MPI implementations.
+Key take-away: Intel-MPI's topology-aware Bcast is 2~5x faster than other MPI implementations.
 
 ## Run the benchmarks
 
@@ -136,6 +136,8 @@ Intel MPI :
 1. Launch by `srun`. Need to set `export I_MPI_PMI_LIBRARY=/opt/slurm/lib/libpmi.so`
 2. Launch by `mpirun` inside slurm interactive session or sbatch script. Should `unset I_MPI_PMI_LIBRARY`
 
+Here we use MPI's own launcher. Not seeing a visible difference due to launch mechanisms.
+
 Ref:
 - https://slurm.schedmd.com/mpi_guide.html
 - https://www.open-mpi.org/faq/?category=slurm
@@ -189,7 +191,7 @@ Uses `I_MPI_ADJUST` family, such as `I_MPI_ADJUST_BCAST`:
 For example, set `export I_MPI_ADJUST_BCAST=8`.
 
 Ref:
-- https://software.intel.com/en-us/mpi-developer-reference-windows-i-mpi-adjust-family-environment-variable
+- https://software.intel.com/en-us/mpi-developer-reference-windows-i-mpi-adjust-family-environment-variables
 - https://software.intel.com/en-us/articles/tuning-the-intel-mpi-library-basic-techniques
 
 #### Tune OpenMPI collectives
@@ -197,14 +199,19 @@ Ref:
 Print all algorithms by:
 
     ompi_info --param coll tuned -l 9 | grep 'bcast algorithm'
+    ompi_info --param coll tuned -l 9 | grep 'allreduce algorithm'
 
 OpenMPI 3.1.4:
 
-    0 ignore, 1 basic linear, 2 chain, 3: pipeline, 4: split binary tree, 5: binary tree, 6: binomial tree.
+    bcast algorithm: 0 ignore, 1 basic linear, 2 chain, 3: pipeline, 4: split binary tree, 5: binary tree, 6: binomial tree.
+
+    allreduce algorithm: 0 ignore, 1 basic linear, 2 nonoverlapping (tuned reduce + tuned bcast), 3 recursive doubling, 4 ring, 5 segmented ring
 
 OpenMPI 4.0.1:
 
-    0 ignore, 1 basic linear, 2 chain, 3: pipeline, 4: split binary tree, 5: binary tree, 6: binomial tree, 7: knomial tree, 8: scatter_allgather, 9: scatter_allgather_ring.
+    bcast algorithm: 0 ignore, 1 basic linear, 2 chain, 3: pipeline, 4: split binary tree, 5: binary tree, 6: binomial tree, 7: knomial tree, 8: scatter_allgather, 9: scatter_allgather_ring.
+
+    allreduce algorithm: 0 ignore, 1 basic linear, 2 nonoverlapping (tuned reduce + tuned bcast), 3 recursive doubling, 4 ring, 5 segmented ring
 
 Then specify the algorithm by command line arguments:
 
