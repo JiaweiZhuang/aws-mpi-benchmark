@@ -20,8 +20,8 @@ AWS instance & network configuration:
 MPI:
 - Intel-MPI 2019.4 (come with pcluster 2.4.1)
 - OpenMPI 3.1.4
-- OpenMPI 4.0.0
-- MPICH 3.3
+- OpenMPI 4.0.1
+- MPICH 3.3.1
 
 ## Browse benchmark results
 
