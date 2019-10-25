@@ -10,13 +10,13 @@ mkdir -p $LOG_DIR
 spack env activate openmpi3
 cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/collective
 
-orterun ./osu_allreduce > $LOG_DIR/bcast_default.log
+orterun ./osu_allreduce > $LOG_DIR/allreduce_default.log
 
 for algo in {0..5}; do
     orterun \
     --mca coll_tuned_use_dynamic_rules 1 \
-    --mca coll_tuned_bcast_algorithm $algo \
-    ./osu_allreduce > $LOG_DIR/bcast_algo$algo.log
+    --mca coll_tuned_allreduce_algorithm $algo \
+    ./osu_allreduce > $LOG_DIR/allreduce_algo$algo.log
 done
 
 spack env deactivate

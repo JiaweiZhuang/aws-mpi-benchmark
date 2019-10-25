@@ -16,6 +16,6 @@ unset MPIR_CVAR_USE_ALLREDUCE
 unset MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM
 unset MPIR_CVAR_ALLREDUCE_INTER_ALGORITHM
 
-mpirun ./osu_allreduce > $LOG_DIR/bcast_allreduce.log
+mpirun ./osu_allreduce > $LOG_DIR/allreduce_default.log
 
 spack env deactivate
