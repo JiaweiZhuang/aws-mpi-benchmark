@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --nodes=4
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=36
-#SBATCH --time=2:00:00
+#SBATCH --time=4:00:00
 
 N=$SLURM_JOB_NUM_NODES
 n=$SLURM_NTASKS
