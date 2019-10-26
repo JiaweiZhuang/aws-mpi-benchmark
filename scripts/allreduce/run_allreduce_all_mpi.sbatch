@@ -9,6 +9,7 @@ echo "Using $N nodes, $n cores"
 
 TOP_LOG_DIR=$HOME/osu_log/allreduce/N${N}n${n}/
 REPEAT=5
+export MPI_ALGO='default'
 
 echo "Top-level output dir: $TOP_LOG_DIR"
 
