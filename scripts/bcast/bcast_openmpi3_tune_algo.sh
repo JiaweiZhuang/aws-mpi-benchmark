@@ -27,7 +27,7 @@ cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/co
 
 orterun ./osu_bcast > $LOG_DIR/bcast_default.log
 
-for algo in $algo; do
+for algo in $algos; do
     orterun \
     --mca coll_tuned_use_dynamic_rules 1 \
     --mca coll_tuned_bcast_algorithm $algo \
