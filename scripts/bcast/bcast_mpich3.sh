@@ -1,12 +1,12 @@
 if [ "$1" ]; then
   LOG_DIR=$1
+  mkdir -p $LOG_DIR
   echo ""
 else
   echo 'Must specify output log directory'
   exit 1
 fi
 
-mkdir -p $LOG_DIR
 
 spack env activate mpich3
 cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/collective
