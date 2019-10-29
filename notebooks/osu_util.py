@@ -38,5 +38,5 @@ def plot_osu(df, ax=None, title='', x_freq=4):
         fig, ax = plt.subplots(1, 1, figsize=[6, 4])
     df.plot(ax=ax, marker='o', logx=True, xticks=df.index[::x_freq], grid=True)
     ax.xaxis.set_major_formatter(ScalarFormatter())
-    ax.set_xlabel('Message Size')
+    ax.set_xlabel('Message Size (Bytes)')
 
