@@ -29,14 +29,14 @@ def read_osu_log_multi(filename_list, columns=None, **kwargs):
     return df_all
 
 
-def plot_osu(df, ax=None, x_freq=4, **kwargs):
+def plot_osu(df, ax=None, x_start=0, x_freq=4, **kwargs):
     """Standard OSU plot
 
     df : pandas series or dataframe
     """
     if ax is None:
         fig, ax = plt.subplots(1, 1, figsize=[6, 4])
-    df.plot(ax=ax, marker='o', logx=True, xticks=df.index[::x_freq], grid=True, **kwargs)
+    df.plot(ax=ax, marker='o', logx=True, xticks=df.index[x_start::x_freq], grid=True, **kwargs)
     ax.xaxis.set_major_formatter(ScalarFormatter())
     ax.minorticks_off()
     ax.set_xlabel('Message Size (Bytes)')
