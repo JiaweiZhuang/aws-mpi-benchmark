@@ -25,7 +25,7 @@ MPI:
 
 ## Browse benchmark results
 
-See [notebooks](./notebooks).
+See [notebooks](./notebooks). To rerun notebooks, also need to download benchmark log files [here](https://github.com/JiaweiZhuang/aws-mpi-benchmark/issues/1).
 
 Key take-away: Intel-MPI's topology-aware Bcast is 2~5x faster than other MPI implementations.
 
