@@ -2,7 +2,7 @@
 
 Benchmark various MPI functions on AWS HPC cluster. Including different EC2 instance types, network configurations, MPI implementations, and collective algorithms (e.g broadcast, allreduce).
 
-The main motivation for such benchmark is that, different MPI implementations and their collective algorithms can yield vastly different efficiency and severely affect application performance. See [this issue](https://github.com/aws/aws-parallelcluster/issues/1143) for example.
+The main motivation for such benchmark is that, different MPI implementations and their collective algorithms can yield vastly different efficiency and severely affect application performance. See [this issue](https://github.com/aws/aws-parallelcluster/issues/1436) for example.
 
 Most scripts in this repo also work on local HPC clusters with minimum modifications.
 
