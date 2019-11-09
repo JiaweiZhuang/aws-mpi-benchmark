@@ -238,5 +238,6 @@ Ref:
 ## References
 
 - [Performance Analysis of MPI Collective Operations](http://www.netlib.org/utk/people/JackDongarra/PAPERS/coll-perf-analysis-cluster-2005.pdf)
+- [Bandwidth Optimal All-reduce Algorithms for Clusters of Workstations](http://www.cs.fsu.edu/~xyuan/paper/09jpdc.pdf)
 - [Everything You Need to Know About the Intel MPI Library](https://www.intel.com/content/dam/www/public/us/en/documents/presentation/things-mpi-library.pdf)
 - [Optimization of Collective Communication Operations in MPICH](https://www.mcs.anl.gov/~thakur/papers/ijhpca-coll.pdf)
