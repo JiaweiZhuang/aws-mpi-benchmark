@@ -57,7 +57,7 @@ allreduce_algo_intelmpi = [
 allreduce_algo_openmpi3 = allreduce_algo_openmpi4 = [
     '0. ignore',
     '1. basic linear',
-    '2. nonoverlapping',
+    '2. non-overlapping (reduce + bcast)',
     '3. recursive doubling',
     '4. ring',
     '5. segmented ring'
