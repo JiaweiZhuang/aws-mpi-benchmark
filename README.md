@@ -86,7 +86,7 @@ The above installation uses TCP sockets. Libfabric & EFA can be enabled via `spa
 
 #### Intel MPI
 
-We the pre-installed Intel-MPI on AWS ParallelCluster, to avoid the hassle of [configuring Intel-MPI with libfabric and EFA](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/efa-start.html#efa-start-impi).
+We use the pre-installed Intel-MPI on AWS ParallelCluster, to avoid the hassle of [configuring Intel-MPI with libfabric and EFA](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/efa-start.html#efa-start-impi).
 
     module avail
     module show intelmpi
