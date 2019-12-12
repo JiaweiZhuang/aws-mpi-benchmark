@@ -20,7 +20,12 @@ else
   exit 1
 fi
 
-spack env activate openmpi3
+if [ -z $OMPI_EFA ]; then
+  spack env activate openmpi3
+else
+  spack env activate openmpi3-efa
+fi
+
 cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/collective
 
 orterun ./osu_allreduce > $LOG_DIR/allreduce_default.log

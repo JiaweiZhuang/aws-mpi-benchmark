@@ -21,8 +21,12 @@ else
   exit 1
 fi
 
+if [ -z $OMPI_EFA ]; then
+  spack env activate openmpi3
+else
+  spack env activate openmpi3-efa
+fi
 
-spack env activate openmpi3
 cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/collective
 
 orterun ./osu_bcast > $LOG_DIR/bcast_default.log

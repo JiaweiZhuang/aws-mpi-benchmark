@@ -22,7 +22,12 @@ else
   exit 1
 fi
 
-spack env activate openmpi4
+if [ -z $OMPI_EFA ]; then
+  spack env activate openmpi4
+else
+  spack env activate openmpi4-efa
+fi
+
 cd $(spack location -i osu-micro-benchmarks)/libexec/osu-micro-benchmarks/mpi/collective
 
 orterun ./osu_bcast > $LOG_DIR/bcast_default.log
