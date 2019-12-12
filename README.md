@@ -77,6 +77,18 @@ Following sections install the environments `openmpi3`, `openmpi4`, `mpich3`. Th
 
 The above installation uses TCP sockets. Libfabric & EFA can be enabled via `spack install openmpi+pmi schedulers=slurm fabrics=libfabric ^libfabric fabrics=efa`, but OpenMPI + EFA is currently quite slow for collectives due to [this issue](https://github.com/aws/aws-parallelcluster/issues/1143).
 
+Update: The problem is solved by libfabric 1.9 https://github.com/aws/aws-parallelcluster/issues/1143#issuecomment-561919602, which is added to Spack by https://github.com/spack/spack/pull/13964
+
+    spack env create openmpi3-efa
+    spack env activate openmpi3-efa
+    spack -v install osu-micro-benchmarks ^openmpi@3.1.4+pmi schedulers=slurm fabrics=libfabric ^libfabric@1.9.0 fabrics=efa
+    spack env deactivate
+
+    spack env create openmpi4-efa
+    spack env activate openmpi4-efa
+    spack -v install osu-micro-benchmarks ^openmpi@4.0.1+pmi schedulers=slurm fabrics=libfabric ^libfabric@1.9.0 fabrics=efa
+    spack env deactivate
+
 #### MPICH
 
     spack env create mpich3
@@ -124,7 +136,7 @@ The variable `OSU_PATH_INTELMPI` will be used in run-time scripts.
 
 #### Note on MPI process management and scheduler
 
-In general, MPI collectives place one MPI process one physical core. Each c5n.18xlarge instance has 36 physical cores / 72 hyperthreads. Slurm thinks there 72 cores so will by default. Here we use `--ntasks-per-node 36` for `srun` command and `sbatch` script to avoid oversubscribe the CPUs. A better way will be [disabling hyperthreading](https://aws.amazon.com/blogs/compute/disabling-intel-hyper-threading-technology-on-amazon-linux/).
+Should use one MPI process on one physical core. Each c5n.18xlarge instance has 36 physical cores / 72 hyperthreads. Slurm thinks there 72 cores so will by default. Here we use `--ntasks-per-node 36` for `srun` command and `sbatch` script to avoid oversubscribe the CPUs. A better way will be [disabling hyperthreading](https://aws.amazon.com/blogs/compute/disabling-intel-hyper-threading-technology-on-amazon-linux/).
 
 MPI processes can be launched by MPI library's launcher or by Slurm, leading to various different ways to start the program.
 
