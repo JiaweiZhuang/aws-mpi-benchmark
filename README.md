@@ -179,6 +179,12 @@ See [OMB README](http://mvapich.cse.ohio-state.edu/static/media/mvapich/README-O
 
 - MPI message size: All OSU benchmarks uses 4 Bytes ~ 1 MB (2^20 = 1048576 Bytes) by default, and I simply use such default size for all benchmarks. Can change the message size by something like `osu_bcast -m 4:8192` if needed.
 
+- For multi-pair point-to-point benchmark `osu_mbw_mr`, check whether the first half of MPI process is on one node by:
+
+    srun -N 2 --ntasks-per-node 36 --pty bash
+    spack env activate openmpi3
+    orterun --tag-output hostname
+
 ### Tune MPI collectives
 
 #### Tune IntelMPI collectives
