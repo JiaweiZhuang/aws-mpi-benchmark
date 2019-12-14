@@ -12,7 +12,7 @@ def read_osu_log(filename, skiprows=3):
         filename, index_col=0, squeeze=True, names=['size', None],
         delim_whitespace=True, skiprows=skiprows, header=None
     )
-    return df
+    return df.iloc[:,:1]  # only keep two columns
 
 
 def read_osu_log_multi(filename_list, columns=None, **kwargs):
