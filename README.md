@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/216921145.svg)](https://zenodo.org/badge/latestdoi/216921145)
+
 # MPI Benchmark on AWS HPC cluster
 
 Benchmark various MPI functions on AWS HPC cluster. Including different EC2 instance types, network configurations, MPI implementations, and collective algorithms (e.g broadcast, allreduce).
